@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import ProjectTile from './ProjectTile';
+import ProjectTile from '../ProjectTile';
 
 function App() {
   const [logoClicks, setLogoClicks] = useState(0);
