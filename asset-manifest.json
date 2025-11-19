@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/joshspace/static/css/main.c28a3715.css",
+    "main.js": "/joshspace/static/js/main.30f73a16.js",
+    "static/js/453.5a93bccd.chunk.js": "/joshspace/static/js/453.5a93bccd.chunk.js",
+    "index.html": "/joshspace/index.html",
+    "main.c28a3715.css.map": "/joshspace/static/css/main.c28a3715.css.map",
+    "main.30f73a16.js.map": "/joshspace/static/js/main.30f73a16.js.map",
+    "453.5a93bccd.chunk.js.map": "/joshspace/static/js/453.5a93bccd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c28a3715.css",
+    "static/js/main.30f73a16.js"
+  ]
+}
