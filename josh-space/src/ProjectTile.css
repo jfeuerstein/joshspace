@@ -29,7 +29,7 @@
 
 /* Active state - tile is clicked but not solved */
 .tile-container.active {
-  transform: scale(1.05) rotate(2deg);
+  transform: scale(1.05) rotate(20deg);
   z-index: 10;
 }
 
@@ -103,48 +103,48 @@
 .corner.top-left {
   top: -2px;
   left: -2px;
-  animation: pulseCornerTL 2s ease-in-out infinite;
+  animation: pulseCornerTL 5s ease-in-out infinite;
 }
 
 .corner.top-right {
   top: -2px;
   right: -2px;
-  animation: pulseCornerTR 2s ease-in-out infinite;
+  animation: pulseCornerTR 5s ease-in-out infinite;
   animation-delay: 0.5s;
 }
 
 .corner.bottom-left {
   bottom: -2px;
   left: -2px;
-  animation: pulseCornerBL 2s ease-in-out infinite;
+  animation: pulseCornerBL 5s ease-in-out infinite;
   animation-delay: 1s;
 }
 
 .corner.bottom-right {
   bottom: -2px;
   right: -2px;
-  animation: pulseCornerBR 2s ease-in-out infinite;
+  animation: pulseCornerBR 5s ease-in-out infinite;
   animation-delay: 1.5s;
 }
 
 @keyframes pulseCornerTL {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-2px, -2px); }
+  50% { transform: translate(-5px, -5px); }
 }
 
 @keyframes pulseCornerTR {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(2px, -2px); }
+  50% { transform: translate(5px, -5px); }
 }
 
 @keyframes pulseCornerBL {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-2px, 2px); }
+  50% { transform: translate(-5px, 5px); }
 }
 
 @keyframes pulseCornerBR {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(2px, 2px); }
+  50% { transform: translate(5px, 5px); }
 }
 
 /* Tile edges for puzzle effect */
@@ -163,38 +163,39 @@
 
 .edge.top {
   top: 0;
-  left: 10%;
-  width: 80%;
+  left: 0;
+  width: 100%;
   height: 1px;
   transform-origin: center;
 }
 
 .edge.bottom {
   bottom: 0;
-  left: 10%;
-  width: 80%;
+  left: 0;
+  width: 100%;
   height: 1px;
   transform-origin: center;
 }
 
 .edge.left {
   left: 0;
-  top: 10%;
+  top: 0;
   width: 1px;
-  height: 80%;
+  height: 100%;
   transform-origin: center;
 }
 
 .edge.right {
   right: 0;
-  top: 10%;
+  top: 0;
   width: 1px;
-  height: 80%;
+  height: 100%;
   transform-origin: center;
 }
 
 .tile-container.active .edge {
   background: var(--text-primary);
+  rotate: 20deg;
 }
 
 .tile-container.solved .edge {

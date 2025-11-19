@@ -17,10 +17,6 @@ function ProjectTile({ title, url, description, isActive, isSolved, onClick, ind
     >
       <div className="tile">
         <div className="tile-corners">
-          <span className="corner top-left">┌</span>
-          <span className="corner top-right">┐</span>
-          <span className="corner bottom-left">└</span>
-          <span className="corner bottom-right">┘</span>
         </div>
 
         <div className="tile-content">

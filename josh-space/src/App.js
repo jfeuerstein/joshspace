@@ -94,8 +94,8 @@ function App() {
         <pre className="logo" onClick={handleLogoClick}>
 {logoClicks >= 5 ? `
 ╔═══════════════════════════╗
-║  you solved the puzzle!   ║
-║     ⚙ josh-thetic ⚙      ║
+║  stop clicking            ║
+║     ⚙ josh-thetic ⚙       ║
 ╚═══════════════════════════╝
 ` : `
 ┌─────────────┐ 
