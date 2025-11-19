@@ -104,6 +104,108 @@
   line-height: 1.2;
 }
 
+/* Password Popup */
+.password-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.password-popup {
+  background: var(--bg-primary);
+  border: 2px solid var(--text-primary);
+  padding: var(--space-xl);
+  max-width: 400px;
+  width: 90%;
+  animation: popupSlideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.password-popup-title {
+  font-family: 'Courier New', monospace;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-lg) 0;
+  font-size: var(--text-base);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.password-input {
+  width: 100%;
+  padding: var(--space-sm);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  font-size: var(--text-base);
+  margin-bottom: var(--space-md);
+  box-sizing: border-box;
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: var(--text-primary);
+}
+
+.password-input::placeholder {
+  color: var(--text-muted);
+}
+
+.password-error {
+  color: var(--color-error, #ff4444);
+  text-align: center;
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-md);
+  animation: shake 0.3s ease;
+}
+
+.password-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.password-btn {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.password-btn:hover {
+  border-color: var(--text-primary);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+@keyframes popupSlideIn {
+  from {
+    transform: scale(0.8) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
