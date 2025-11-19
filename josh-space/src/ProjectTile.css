@@ -1,0 +1,358 @@
+.tile-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+/* Animate tiles sliding into place on load */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(-5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.tile-container {
+  animation: slideIn 0.6s ease-out;
+  animation-delay: calc(var(--tile-index) * 0.1s);
+  animation-fill-mode: both;
+}
+
+/* Active state - tile is clicked but not solved */
+.tile-container.active {
+  transform: scale(1.05) rotate(2deg);
+  z-index: 10;
+}
+
+/* Solved state - tile is aligned */
+.tile-container.solved {
+  transform: scale(1.02) rotate(0deg);
+  z-index: 5;
+}
+
+.tile-container.solved:hover {
+  transform: scale(1.05) rotate(0deg);
+}
+
+/* The main tile */
+.tile {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+}
+
+.tile-container:hover .tile {
+  border-color: var(--text-secondary);
+  background: var(--bg-hover);
+}
+
+.tile-container.active .tile {
+  border-color: var(--text-primary);
+  background: var(--bg-hover);
+  box-shadow: 0 0 20px rgba(224, 224, 224, 0.1);
+}
+
+.tile-container.solved .tile {
+  border-color: var(--color-success);
+  background: rgba(68, 255, 68, 0.03);
+}
+
+/* Animated corners */
+.tile-corners {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  font-size: var(--text-xl);
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  transition: all 0.4s ease;
+  opacity: 0.3;
+}
+
+.tile-container:hover .corner {
+  opacity: 0.6;
+  color: var(--text-secondary);
+}
+
+.tile-container.solved .corner {
+  color: var(--color-success);
+  opacity: 1;
+}
+
+.corner.top-left {
+  top: -2px;
+  left: -2px;
+  animation: pulseCornerTL 2s ease-in-out infinite;
+}
+
+.corner.top-right {
+  top: -2px;
+  right: -2px;
+  animation: pulseCornerTR 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.corner.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  animation: pulseCornerBL 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.corner.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  animation: pulseCornerBR 2s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes pulseCornerTL {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-2px, -2px); }
+}
+
+@keyframes pulseCornerTR {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(2px, -2px); }
+}
+
+@keyframes pulseCornerBL {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-2px, 2px); }
+}
+
+@keyframes pulseCornerBR {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(2px, 2px); }
+}
+
+/* Tile edges for puzzle effect */
+.tile-edges {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.edge {
+  position: absolute;
+  background: var(--border-primary);
+  transition: all 0.4s ease;
+}
+
+.edge.top {
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  transform-origin: center;
+}
+
+.edge.bottom {
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  transform-origin: center;
+}
+
+.edge.left {
+  left: 0;
+  top: 10%;
+  width: 1px;
+  height: 80%;
+  transform-origin: center;
+}
+
+.edge.right {
+  right: 0;
+  top: 10%;
+  width: 1px;
+  height: 80%;
+  transform-origin: center;
+}
+
+.tile-container.active .edge {
+  background: var(--text-primary);
+}
+
+.tile-container.solved .edge {
+  background: var(--color-success);
+}
+
+/* Content inside tile */
+.tile-content {
+  text-align: center;
+  padding: var(--space-md);
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.tile-container.active .tile-content {
+  transform: scale(1.05);
+}
+
+.tile-title {
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-sm) 0;
+  font-family: 'Courier New', monospace;
+  white-space: pre;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.tile-container.solved .tile-title {
+  color: var(--color-success);
+}
+
+.tile-description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: var(--space-sm) 0;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.tile-container:hover .tile-description {
+  color: var(--text-primary);
+}
+
+.tile-hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  display: block;
+  margin-top: var(--space-sm);
+}
+
+.tile-container:hover .tile-hint {
+  color: var(--text-secondary);
+}
+
+.tile-container.solved .tile-hint {
+  color: var(--color-success);
+}
+
+/* Solve indicator */
+.solve-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  animation: checkmarkAppear 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes checkmarkAppear {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.checkmark {
+  font-size: var(--text-xl);
+  color: var(--color-success);
+  text-shadow: 0 0 10px rgba(68, 255, 68, 0.5);
+  animation: checkmarkPulse 2s ease-in-out infinite;
+}
+
+@keyframes checkmarkPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Label below tile */
+.tile-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border-primary);
+  min-width: 200px;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.tile-label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(224, 224, 224, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.tile-container:hover .tile-label::before {
+  left: 100%;
+}
+
+.tile-container:hover .tile-label {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  transform: translateY(-2px);
+}
+
+.tile-container.solved .tile-label {
+  color: var(--color-success);
+  border-color: var(--color-success);
+  box-shadow: 0 0 10px rgba(68, 255, 68, 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .tile {
+    width: 240px;
+    height: 240px;
+  }
+
+  .tile-title {
+    font-size: var(--text-sm);
+  }
+
+  .tile-description {
+    font-size: var(--text-xs);
+  }
+
+  .tile-label {
+    font-size: var(--text-xs);
+    min-width: 160px;
+  }
+
+  .corner {
+    font-size: var(--text-lg);
+  }
+}
