@@ -1,0 +1,185 @@
+.lens-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.lens-container:hover {
+  transform: translateY(-5px);
+}
+
+.lens {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 3px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease;
+}
+
+.lens-container:hover .lens {
+  border-color: var(--text-secondary);
+}
+
+/* Concentric rings for lens effect */
+.lens-outer-ring {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  border-radius: 50%;
+  border: 2px solid var(--border-primary);
+  background: transparent;
+}
+
+.lens-middle-ring {
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: transparent;
+}
+
+.lens-inner-ring {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: radial-gradient(circle, var(--bg-hover) 0%, var(--bg-primary) 100%);
+}
+
+/* Glass surface with content */
+.lens-glass {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.lens-container:hover .lens-glass {
+  background: var(--bg-hover);
+}
+
+.lens-content {
+  text-align: center;
+  padding: var(--space-sm);
+  z-index: 2;
+}
+
+.lens-title {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-xs) 0;
+  font-family: 'Courier New', monospace;
+  white-space: pre;
+  line-height: 1.2;
+}
+
+.lens-description {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin: var(--space-xs) 0;
+  line-height: 1.4;
+}
+
+.lens-hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.lens-container:hover .lens-hint {
+  color: var(--text-secondary);
+}
+
+/* Lens glare effect */
+.lens-glare {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 30%;
+  height: 30%;
+  background: radial-gradient(circle, rgba(224, 224, 224, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Lens markings (like f-stop and focal length) */
+.lens-markings {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.marking {
+  position: absolute;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+
+.marking.top {
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.marking.bottom {
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Label below the lens */
+.lens-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: var(--space-xs);
+  border: 1px solid var(--border-primary);
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.lens-container:hover .lens-label {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .lens {
+    width: 220px;
+    height: 220px;
+  }
+
+  .lens-title {
+    font-size: var(--text-xs);
+  }
+
+  .lens-description {
+    font-size: 0.7rem;
+  }
+
+  .lens-label {
+    font-size: var(--text-xs);
+    min-width: 160px;
+  }
+}

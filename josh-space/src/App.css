@@ -1,38 +1,134 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Header */
+.header {
+  text-align: center;
+  padding: var(--space-xl) var(--space-sm);
+  border-bottom: 1px solid var(--border-primary);
 }
 
-@keyframes App-logo-spin {
+.logo {
+  font-family: 'Courier New', monospace;
+  color: var(--text-primary);
+  margin: 0 auto var(--space-sm) auto;
+  font-size: var(--text-base);
+  line-height: 1.2;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.logo:hover {
+  color: var(--text-secondary);
+}
+
+.tagline {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  text-transform: lowercase;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-sm);
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.intro-text {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin: 0;
+  padding: var(--space-sm);
+  border: 1px solid var(--border-primary);
+  display: inline-block;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  justify-items: center;
+  margin: var(--space-xl) 0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: var(--space-xl) var(--space-sm);
+  border-top: 1px solid var(--border-primary);
+  margin-top: auto;
+}
+
+.footer-art {
+  font-family: 'Courier New', monospace;
+  color: var(--text-muted);
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.2;
+}
+
+/* Animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.App {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .logo {
+    font-size: var(--text-sm);
+  }
+
+  .tagline {
+    font-size: var(--text-xs);
+  }
+
+  .main-content {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .intro-text {
+    font-size: var(--text-base);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .footer-art {
+    font-size: var(--text-xs);
   }
 }
