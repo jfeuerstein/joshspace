@@ -10,9 +10,9 @@ function App() {
 
   const projects = [
     {
-      title: "D&D\nCharacter\nSheets",
+      title: "HxHxDxD\nCharacter\nSheets",
       url: "https://jfeuerstein.github.io/dnd-character-sheets/",
-      description: "character management for tabletop adventures"
+      description: "character management"
     },
     {
       title: "Jessay\nWriter",
@@ -22,7 +22,7 @@ function App() {
     {
       title: "jo-sh\nTerminal",
       url: "https://jfeuerstein.github.io/jo-sh/",
-      description: "terminal-style personal interface"
+      description: "a to do list for a specific kind of person"
     }
   ];
 
@@ -58,7 +58,7 @@ function App() {
   };
 
   return (
-    <div className={`App ${allSolved ? 'puzzle-solved' : ''}`}>
+    <div className={`App ${allSolved ? 'access granted' : ''}`}>
       <header className="header">
         <pre className="logo" onClick={handleLogoClick}>
 {logoClicks >= 5 ? `
@@ -67,20 +67,28 @@ function App() {
 ║     ⚙ josh-thetic ⚙      ║
 ╚═══════════════════════════╝
 ` : `
-┌─────────────┐
-│ josh space  │
-└─────────────┘
+┌─────────────┐ 
+│ josh space  │ 
+└─────────────┘ 
 `}
         </pre>
-        <p className="tagline">[ animated portfolio. puzzle projects. ]</p>
+        <pre className="tagline">
+        *   '*                                      <br/>
+        *                           <br/>
+        *                  <br/>
+        *<br/>
+        *                <br/>
+        *   <br/>    
+
+ </pre>
       </header>
 
       <main className="main-content">
         <section className="intro">
           <p className="intro-text">
             {allSolved
-              ? '✓ puzzle solved! click tiles to view projects ✓'
-              : 'align the tiles to solve the puzzle'}
+              ? '✓ all unlocked ✓'
+              : 'welcome to my website'}
           </p>
         </section>
 
@@ -102,8 +110,8 @@ function App() {
 
       <footer className="footer">
         <pre className="footer-art">
-┌────────────────────────────┐
-│ built with the josh-thetic │
+┌────────────────────────────┐<br/>
+│ built with the josh-thetic │<br/>
 └────────────────────────────┘
         </pre>
       </footer>
