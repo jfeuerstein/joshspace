@@ -2,7 +2,7 @@
   "name": "josh-space",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jfeuerstein.github.io/joshspace",
+  "homepage": "https://joshfeu.space",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
